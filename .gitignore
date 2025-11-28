@@ -1,1 +1,13 @@
 **/.my_pgpass
+**/*__pycache__**
+**.pyc
+tdebian/__pycache__/settings.cpython-313.pyc
+
+# Ignore PostgreSQL service and password files
+.my_pgpass
+.pg_service.conf
+
+# Ignore Python cache
+**/__pycache__/
+*.pyc
+
