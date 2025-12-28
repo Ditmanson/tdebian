@@ -17,10 +17,9 @@ RUN set -ex \
 
 COPY . /app
 COPY .pg_service.conf /
-COPY .my_pgpass /
 RUN ls -a
-RUN chown root:root /.pg_service.conf /.my_pgpass \
-  && chmod 600 /.pg_service.conf /.my_pgpass
+RUN chown root:root /.pg_service.conf  \
+  && chmod 600 /.pg_service.conf
 
 
 WORKDIR /app

@@ -25,12 +25,15 @@ SECRET_KEY = 'django-insecure-77&-+yv)nvuk%emolzads%2yz(gf+o8w8r58afl&)0+v((nc#6
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['tdebian.com', 'localhost', 'griz.sh']
+USE_X_FORWARDED_HOST = True
+SECURE_PROXY_SSL_HEADER = ("HTTP_X_FORWARDED_PROTO", "https")
 
 
 # Application definition
 
 INSTALLED_APPS = [
+    'griz.apps.GrizConfig',
     'blog.apps.BlogConfig',
     'django.contrib.admin',
     'django.contrib.auth',
@@ -88,7 +91,7 @@ DATABASES = {
         },
     }
 }
-
+#
 # Password validation
 # https://docs.djangoproject.com/en/5.2/ref/settings/#auth-password-validators
 
