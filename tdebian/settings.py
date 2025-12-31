@@ -26,6 +26,13 @@ SECRET_KEY = 'django-insecure-77&-+yv)nvuk%emolzads%2yz(gf+o8w8r58afl&)0+v((nc#6
 DEBUG = True
 
 ALLOWED_HOSTS = ['tdebian.com', 'localhost', 'griz.sh']
+CSRF_TRUSTED_ORIGINS = [
+    "https://griz.sh",
+    "http://griz.sh",
+    "http://localhost",
+]
+
+
 USE_X_FORWARDED_HOST = True
 SECURE_PROXY_SSL_HEADER = ("HTTP_X_FORWARDED_PROTO", "https")
 
@@ -45,6 +52,7 @@ INSTALLED_APPS = [
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
+    "whitenoise.middleware.WhiteNoiseMiddleware",
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
@@ -76,22 +84,22 @@ WSGI_APPLICATION = 'tdebian.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/5.2/ref/settings/#databases
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
-    }
-}
 #DATABASES = {
-#    "default": {
-#        "ENGINE": "django.db.backends.postgresql",
-#        "OPTIONS": {
-#            "service": "my_service",
-#            "passfile": ".my_pgpass",
-#        },
+#    'default': {
+#        'ENGINE': 'django.db.backends.sqlite3',
+#        'NAME': BASE_DIR / 'db.sqlite3',
 #    }
 #}
-#
+DATABASES = {
+    "default": {
+        "ENGINE": "django.db.backends.postgresql",
+        "OPTIONS": {
+            "service": "my_service",
+            "passfile": ".my_pgpass",
+        },
+    }
+}
+
 # Password validation
 # https://docs.djangoproject.com/en/5.2/ref/settings/#auth-password-validators
 
@@ -126,7 +134,14 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/5.2/howto/static-files/
 
-STATIC_URL = 'static/'
+STATIC_URL = '/static/'
+STATIC_ROOT = BASE_DIR / 'static'
+STORAGES = {
+    # ...
+    "staticfiles": {
+        "BACKEND": "whitenoise.storage.CompressedManifestStaticFilesStorage",
+    },
+}
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.2/ref/settings/#default-auto-field

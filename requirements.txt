@@ -5,3 +5,4 @@ packaging==25.0
 psycopg==3.2.13
 psycopg-binary==3.2.13
 sqlparse==0.5.3
+whitenoise==6.11.0
