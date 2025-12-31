@@ -2,6 +2,7 @@
 **/*__pycache__**
 **.pyc
 tdebian/__pycache__/settings.cpython-313.pyc
+**/static**
 
 # Ignore Python cache
 **/__pycache__/
