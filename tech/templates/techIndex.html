@@ -45,7 +45,7 @@
         <div class="buttons">
           <button class="button is-primary is-outlined is-medium"
                   hx-trigger="click"
-                  hx-get="{% url 'grizContent' %}"
+                  hx-get="{% url 'techContent' %}"
                   hx-target="#contentBox"
                   hx-swap="innerHTML">
             All Content
@@ -54,7 +54,7 @@
           {% for tag in tags %}
           <button class="button is-info"
                   hx-trigger="click"
-                  hx-get="{% url 'grizTag' tag.name %}"
+                  hx-get="{% url 'techTag' tag.name %}"
                   hx-target="#contentBox"
                   hx-swap="innerHTML">
             {{ tag }}
