@@ -1,29 +1,75 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
+  <head>
     <meta charset="UTF-8">
     <title>Griz</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@1.0.4/css/bulma.min.css" >
-</head>
-<body>
-  <section class="hero is-info is-large">
-    <div class="hero-body">
+  </head>
+    <body>
+      <section class="hero is-info is-large">
+        <div class="hero-body">
+          <h1 class="title is-1 has-text-centered">My Pages</h1>
+          <p class="block has-text-centered">Remember I'm a devops guy, not a UI/UX expert. All these sites run off my home computer. If the site is down, it means my computer is off. 
+          if something isn't as pretty as it could be, it's because I don't work with typescript daily & I have no front end frameworks here. I use 
+          HTMX/Django/Hugo/Bulma CSS to create everything here. I import as very little static on these sites because my home internet speed is slow.
+          </p>
+          <div class="block">
 
-        <ul class="">
-            <li class="title">
-            <a href="{% url 'grizIndex' %}">griz.sh/griz</a>
-            </li>
-            <li class="subtitle">
-                <a href="https://tech.griz.sh">tech.griz.sh</a>
-            </li>
-            <li class="subtitle">
-              <a href="{% url 'techIndex' %}">griz.sh/tech</a>
-            </li>
-        </ul>
-    </div>
+            <table class="table is-bordered is-hoverable is-fullwidth has-text-centered">
+              <thead class="has-text-centered">
+                <tr>
+                  <th class="has-text-centered">#</th>
+                  <th class="has-text-centered">link</th>
+                  <th class="has-text-centered">description</th>
+                  <th class="has-text-centered">framework site is built in</th>
+                </tr>
+              </thead>
+              <tfoot>
+                <tr>
+                  <th></th>
+                  <th></th>
+                  <th></th>
+                  <th></th>
+                </tr>
+              </tfoot>
+              <tbody>
+                <tr class='is-primary'>
+                  <th>1</th>
+                  <td><a class="has-text-link has-text-weight-bold" href="{% url 'grizIndex' %}">griz.sh/griz</a></td>
+                  <td>This page brings you to my dog videos</td>
+                  <td>Django</td>
+                </tr>
+                <tr class='is-warning'>
+                  <th>2</th>
+                  <td><a class="has-text-link has-text-weight-bold" href="{% url 'techIndex' %}">griz.sh/tech</a></td>
+                  <td>This page brings you to my tech videos</td>
+                  <td>Django</td>
+                </tr>
+                <tr class='is-primary'>
+                  <th>3</th>
+                  <td><a class="has-text-link has-text-weight-bold" href="https://tech.griz.sh">tech.griz.sh</a></td>
+                  <td>This page brings you to my tech journal, not really docs, more like notes</td>
+                  <td>Hugo</td>
+                </tr>
+                <tr class='is-warning'>
+                  <th>4</th>
+                  <td><a class="has-text-link has-text-weight-bold" href="https://docs.griz.sh">docs.griz.sh</a></td>
+                  <td>This page brings you to my tech docs, I write these for other people to follow my steps</td>
+                  <td>Hugo</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
 
-  </section>
+          <footer class="footer has-text-centered">
+            <p class="has-text-primary">
+            Everything I produce is open source. Everything is replicable from my <a href="https://github.com/Ditmanson?tab=repositories">github.</a>
+            Only thing not included in there is kubernetes secrets. I've considered uploading them with sealedsecrets; however, at the moment I just have 
+            too much that needs attending too.
+            </p>
+          </footer> 
 
-</body>
+      </section>
+
+    </body>
 </html>
-
