@@ -6,4 +6,5 @@ urlpatterns = [
     path("", views.grizIndex, name="grizIndex"),
     path("content/", views.grizContent, name="grizContent"),
     path("<str:myTag>/", views.grizTag, name="grizTag"),
+    # path("entries/", views.grizDateRange, name="grizDateRange"),
 ]

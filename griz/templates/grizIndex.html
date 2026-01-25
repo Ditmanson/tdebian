@@ -12,58 +12,53 @@
     <div class="section">
       <div class="content">
 
-        <div class="level">
-          <div class="level-left">
-            <h1 class="level-item">From
-              <input class="level-item" type="date"/>
-              To
-              <input class="level-item" type="date"/>
-              <button class="level-item button">Any time</button>
-            </h1>
+
+
+        <div class="container">
+          <div class="is-flex is-justify-content-center is-align-items-center">
+            <div class="buttons">
+              <button class="button is-primary is-outlined is-medium"
+                      hx-trigger="click"
+                      hx-get="{% url 'grizContent' %}"
+                      hx-target="#contentBox"
+                      hx-swap="innerHTML">
+                All Content
+              </button>
+
+              {% for tag in tags %}
+              <button class="button is-info"
+                      hx-trigger="click"
+                      hx-get="{% url 'grizTag' tag.name %}"
+                      hx-target="#contentBox"
+                      hx-swap="innerHTML">
+                {{ tag }}
+              </button>
+
+              {% endfor %}
+            </div>
           </div>
+          <div class="block">
 
 
-          <div class="level-right">
-            <div class="checkboxes">
-              <div class="block level-item content">
-                {% for tag in tags %}
-                <label class="checkbox">
-                  <input type="checkbox"/>
-                  <strong>{{ tag }}</strong>
-                  {% endfor %}
-                  <input type="checkbox"/> All Tags
-                </label>
-              </div>
+            <!-- <form hx-get="{% url 'grizContent' %}" -->
+            <!--       hx-target="#contentBox" -->
+            <!--       hx-swap="innerHTML" -->
+            <!--       class="mb-5"> -->
+            <!---->
+            <!--   <label>From:</label> -->
+            <!--   <input type="date" name="start_date"><br> -->
+            <!---->
+            <!--   <label>To:</label> -->
+            <!--   <input type="date" name="end_date"><br> -->
+            <!---->
+            <!--   <button type="submit" class="button is-primary">Filter by Date</button> -->
+            <!-- </form> -->
+
+
+
+            <div class="container content" id="contentBox">
+              <h1 class="subtitle">Loading 3 most recent videos, select filter button or all content for more </h1>
+              {% include "grizContent.html" %}
             </div>
           </div>
         </div>
-      </div>
-    </div>
-    <div class="container">
-      <p>I haven't figured out forms yet so... ignore above</p>
-      <div class="is-flex is-justify-content-center is-align-items-center">
-        <div class="buttons">
-          <button class="button is-primary is-outlined is-medium"
-                  hx-trigger="click"
-                  hx-get="{% url 'grizContent' %}"
-                  hx-target="#contentBox"
-                  hx-swap="innerHTML">
-            All Content
-          </button>
-
-          {% for tag in tags %}
-          <button class="button is-info"
-                  hx-trigger="click"
-                  hx-get="{% url 'grizTag' tag.name %}"
-                  hx-target="#contentBox"
-                  hx-swap="innerHTML">
-            {{ tag }}
-          </button>
-
-          {% endfor %}
-        </div>
-      </div>
-    </div>
-
-
-    <div class="container content" id="contentBox"></div>
