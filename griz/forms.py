@@ -1,10 +1,16 @@
 from django import forms
-from .models import Dog
+from .models import Dog, Entry
 
-# class EntryForm(forms.ModelForm):
-#     class Meta:
-#         model = models.Entry
-#         fields = [ 'dog', 'tags',  ]
+
+
+class EntryForm(forms.ModelForm):
+    class Meta:
+        model = Entry
+        fields = [ 'dog', 'tags', 'date' ]
+        widgets = {
+            'tags': forms.CheckboxSelectMultiple(),
+            'date': forms.DateInput(attrs={'type': 'date'}),
+        }
 #
 # class EntryFilterForm(forms.Form):
 #     dog = forms.ModelChoiceField(

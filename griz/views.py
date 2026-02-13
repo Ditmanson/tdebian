@@ -2,7 +2,7 @@ from django.shortcuts import render
 from django.http import HttpResponse
 from .models import Entry, Tag, Dog
 from django.utils.dateparse import parse_date
-# from .forms import EntryFilterForm
+from .forms import EntryForm
 
 
 def grizIndex(request):
@@ -12,6 +12,7 @@ def grizIndex(request):
     context = {
         'entries': entries,
         'tags': tags,
+        'form': EntryForm()
         # 'dogs': dogs,
         # 'form': EntryFilterForm(),
     }

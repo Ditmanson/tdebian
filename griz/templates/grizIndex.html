@@ -8,6 +8,7 @@
 
   </head>
   <body>
+    {% load widget_tweaks %}
 
     <div class="section">
       <div class="content">
@@ -40,25 +41,30 @@
           <div class="block">
 
 
-            <!-- <form hx-get="{% url 'grizContent' %}" -->
-            <!--       hx-target="#contentBox" -->
-            <!--       hx-swap="innerHTML" -->
-            <!--       class="mb-5"> -->
-            <!---->
-            <!--   <label>From:</label> -->
-            <!--   <input type="date" name="start_date"><br> -->
-            <!---->
-            <!--   <label>To:</label> -->
-            <!--   <input type="date" name="end_date"><br> -->
-            <!---->
-            <!--   <button type="submit" class="button is-primary">Filter by Date</button> -->
-            <!-- </form> -->
-
-
+            <form>
+              <div class="">
+                <label >Dog</label>
+                {% render_field form.dog class="input select" %}
+                <label>Tags:</label>
+                <div class="checkboxes">
+                  {% for checkbox in form.tags %}
+                  <label class="checkbox">
+                    {{ checkbox.tag }}
+                    {{ checkbox.choice_label }}
+                  </label>
+                  {% endfor %}
+                </div>
+                <label>Not ready for date:</label>
+                {% render_field form.date class="input " %}
+              </div>
+              <button type="submit" class="button is-danger"> Future Submit! </button> 
+              <div class="tags-grid">
+            </form>
+            <br>
 
             <div class="container content" id="contentBox">
               <h1 class="subtitle">Loading 3 most recent videos, select filter button or all content for more </h1>
               {% include "grizContent.html" %}
             </div>
+              </div>
           </div>
-        </div>
