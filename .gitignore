@@ -1,3 +1,4 @@
+node_modules/**
 **/.my_pgpass
 **/*__pycache__**
 **.pyc
