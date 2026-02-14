@@ -1,14 +1,31 @@
+---
+branches:
+  - main
 plugins:
   - "@semantic-release/commit-analyzer"
+  - preset: conventionalcommits
+    releaseRules:
+      - type: release
+        release: major
+      - type: ci
+        release: minor
+      - docs: 
+        release: patch
   - "@semantic-release/release-notes-generator"
+  - preset: conventionalcommits
+    presetConfig:
+      types:
+        - type: release
+          section: "release "
+        - type: ci
+          section: "ci "
+        - type: feat
+          section: "feat "
+        - type: docs
+          section: "docs "
 
   - - "@semantic-release/changelog"
-    - changelogTitle: |
-        # Changelog
-
-        All notable changes to this project will be documented in this file. See
-        [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
-
+    - changelogFile: docs/CHANGELOG.md 
   - - "@semantic-release/github"
     - assets: "pack/*.tgz"
 
